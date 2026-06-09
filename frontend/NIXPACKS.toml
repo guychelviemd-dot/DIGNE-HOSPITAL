@@ -1,0 +1,9 @@
+[providers]
+node = {}
+
+[phases.build]
+# Railway va injecter VITE_API_BASE_URL ici automatiquement si elle est dans le dashboard
+cmd = "npm ci && npm run build"
+
+[start]
+cmd = "npx serve -s dist -p $PORT"

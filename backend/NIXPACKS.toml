@@ -1,0 +1,9 @@
+[providers]
+python = {}
+
+[build]
+# On installe les paquets système requis pour psycopg2 (le driver Postgres de Django)
+aptPkgs = ["libpq-dev", "gcc", "python3-dev"]
+
+[start]
+cmd = "python manage.py migrate && gunicorn core.wsgi:application"
