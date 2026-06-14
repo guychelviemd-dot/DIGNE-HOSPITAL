@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import path from 'path'
 
 export default defineConfig(({ mode }) => {
-  // Charge les variables d'environnement (comme celle de Railway)
+  // Charge correctement les variables d'environnement de Railway
   const env = loadEnv(mode, process.cwd(), '')
   
   return {
@@ -13,8 +13,8 @@ export default defineConfig(({ mode }) => {
         '@': path.resolve(__dirname, './src'),
       },
     },
-    // Si tu as besoin d'utiliser l'URL directement dans la config :
     define: {
+      // Permet à ton code Vue d'accéder à l'URL sans faire planter le build
       'process.env.VITE_API_BASE_URL': JSON.stringify(env.VITE_API_BASE_URL)
     }
   }
