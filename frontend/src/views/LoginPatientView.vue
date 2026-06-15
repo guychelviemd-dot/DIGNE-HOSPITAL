@@ -23,7 +23,7 @@ async function handleLogin() {
   if (demo && demo.password === password) {
     localStorage.setItem('sghl_token', 'demo_token_' + Date.now())
     localStorage.setItem('sghl_user',  JSON.stringify({ username, ...demo }))
-    window.location.href = '/patient/accueil'
+    router.push('/patient/accueil')
     return
   }
 
@@ -37,7 +37,7 @@ async function handleLogin() {
     const data = await res.json()
     localStorage.setItem('sghl_token', data.access)
     localStorage.setItem('sghl_user',  JSON.stringify(data.user || { username, role: 'Patient', full_name: username }))
-    window.location.href = '/patient/accueil'
+    router.push('/patient/accueil')
   } catch {
     error.value   = 'Identifiants incorrects.'
     loading.value = false

@@ -57,7 +57,7 @@ function connecter() {
     localStorage.setItem('sghl_token', token)
     localStorage.setItem('sghl_user',  JSON.stringify(user))
     // Redirection forcée
-    window.location.replace('/dashboard/accueil')
+    router.push('/dashboard/accueil')
     return
   }
 
